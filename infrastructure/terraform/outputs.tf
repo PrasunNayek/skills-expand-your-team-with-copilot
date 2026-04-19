@@ -15,7 +15,7 @@ output "eks_cluster_name" {
 
 output "eks_node_group_name" {
   description = "Managed node group name."
-  value       = keys(module.eks.eks_managed_node_groups)[0]
+  value       = module.eks.eks_managed_node_groups["default"].node_group_name
 }
 
 output "public_subnets" {

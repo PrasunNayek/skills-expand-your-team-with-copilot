@@ -8,6 +8,11 @@ variable "azs" {
   description = "Availability zones used for subnet placement."
   type        = list(string)
   default     = ["us-east-1a", "us-east-1b", "us-east-1c"]
+
+  validation {
+    condition     = length(var.azs) >= 3
+    error_message = "Provide at least three AZs to create app/db/public subnet tiers across 3 AZs."
+  }
 }
 
 variable "eks_cluster_version" {
